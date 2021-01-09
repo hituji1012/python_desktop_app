@@ -84,6 +84,8 @@ class MainWindow(QMainWindow):
         self.tools.addAction(open_file)
         self.tools.addAction(save_file)
 
+        self.load_data = None
+
 
     def show_info(self):
         """ Helpメニュ用メソッド """
@@ -91,11 +93,23 @@ class MainWindow(QMainWindow):
 
     def open_file(self):
         """ ツールバーメソッド """
-        print("open_file")
+        fp = QFileDialog.getOpenFileName(self, 'CSV 読込先を選択', "hoge.csv", "CSV (*.csv)")
+        if fp[0]:
+            with open(fp[0]) as f:
+                self.load_data = f.read()
+                QMessageBox.information(self, 'ファイル読み込み', '正常に読み込みました。')
+                print(self.load_data)
 
     def save_file(self):
         """ ツールバーメソッド """
-        print("save_file")
+        if self.load_data:
+            fp = QFileDialog.getSaveFileName(self, 'CSV 保存先を選択', "hoge.csv", "CSV (*.csv)")
+            if fp[0]:
+                with open(fp[0], mode='w') as f:
+                    f.write(self.load_data)
+                QMessageBox.information(self, 'ファイル保存', '正常に保存しました。')
+        else:
+            QMessageBox.critical(self, 'Error Message', 'データ読み込まれていません。')
 
 
 def get_main_app(argv=[]):
