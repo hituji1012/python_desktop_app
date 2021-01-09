@@ -62,7 +62,6 @@ class MainWindow(QMainWindow):
         # ToolBarを定義
         title = 'Tools'
         self.tools = QToolBar(title)
-        self.tools.setObjectName(u'%sToolBar' % title)
         self.tools.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         # self.addToolBar(Qt.LeftToolBarArea, toolbar) #左に配置
         self.addToolBar(Qt.TopToolBarArea, self.tools) #上に配置
