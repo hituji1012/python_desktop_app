@@ -37,9 +37,9 @@ class MainWindow(QMainWindow):
 
         # ------------------ その2メニューの追加 --------------------
         # メニューの追加
-        self.menus = {'File': self.menuBar().addMenu('&File'),
-                      'Edit': self.menuBar().addMenu('&Edit'),
-                      'Help': self.menuBar().addMenu('&Help'),}
+        self.menus = {'File': self.menuBar().addMenu('File'),
+                      'Edit': self.menuBar().addMenu('Edit'),
+                      'Help': self.menuBar().addMenu('Help'),}
 
         # アクションを設定する
         quit = new_action(self,
